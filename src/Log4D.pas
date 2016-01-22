@@ -61,7 +61,7 @@ uses
 {$ELSE}
   Windows,
 {$ENDIF}
-{$IFDEF DELPHI5_UP}
+{$IFDEF HAS_UNIT_CONTNRS}
   Contnrs,
 {$ENDIF}
   SysUtils;
@@ -1873,9 +1873,14 @@ end;
 
 { Initialise internal logging - send it to debugging output. }
 constructor TLogLog.Create;
+// fix for Free Pascal by M Justin: use a variable
+var
+  TmpAppender: ILogAppender;
 begin
   inherited Create('');
-  AddAppender(TLogODSAppender.Create(''));
+
+  TmpAppender := TLogODSAppender.Create('');
+  AddAppender(TmpAppender);
   InternalDebugging := False;
   Level             := Log4D.Debug;
 end;
@@ -2203,7 +2208,10 @@ end;
 procedure TLogCustomLayout.Init;
 begin
   inherited Init;
-  SetOption(DateFormatOpt, ShortDateFormat);
+  SetOption(DateFormatOpt,
+    {$IFDEF DELPHIXE_UP}FormatSettings.{$ENDIF}
+    {$IFDEF FPC}FormatSettings.{$ENDIF}
+    ShortDateFormat);
 end;
 
 { Set a list of options for this layout. }
