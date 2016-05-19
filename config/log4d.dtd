@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Author: Keith Wood. -->
+
+<!-- A configuration element consists of optional renderer elements,
+     appender elements, loggers, and an optional root element. -->
+
+<!ELEMENT log4d:configuration (renderer*, appender*, logger*, root?)>
+
+
+<!-- The loggerFactory attribute names the factory to be used to
+     create new instances of loggers.
+
+     Setting the configDebug attribute enable the printing
+     of internal Log4D logging statements.
+
+     The threshold attribute takes a level value such that all logging
+     statements with a level below this value are disabled.
+     It defaults to permit all logging. -->
+
+<!ATTLIST log4d:configuration
+  loggerFactory CDATA #IMPLIED
+  configDebug   (true | false) "false"
+  threshold     CDATA "ALL"
+>
+
+<!-- Renderer elements allow the user to customize the conversion of
+     message objects to strings. -->
+
+<!ELEMENT renderer EMPTY>
+<!ATTLIST renderer
+  renderedClass  CDATA #REQUIRED
+  renderingClass CDATA #REQUIRED
+>
+
+<!-- Appenders must have a name and a class. Appenders may contain
+     an error handler, parameters, a layout, and filters. -->
+
+<!ELEMENT appender (errorHandler?, param*, layout?, filter*)>
+<!ATTLIST appender
+  name  ID    #REQUIRED
+  class CDATA #REQUIRED
+>
+
+<!-- ErrorHandlers can be of any class.
+     They can admit any number of parameters. -->
+
+<!ELEMENT errorHandler (param*)>
+<!ATTLIST errorHandler
+  class CDATA #REQUIRED
+>
+
+<!-- Layouts can be of any class.
+     They can admit any number of parameters. -->
+
+<!ELEMENT layout (param*)>
+<!ATTLIST layout
+  class CDATA #REQUIRED
+>
+
+<!-- Filters can be of any class.
+     They can admit any number of parameters. -->
+
+<!ELEMENT filter (param*)>
+<!ATTLIST filter
+  class CDATA #REQUIRED
+>
+
+<!-- Parameters have a name and a value. -->
+
+<!ELEMENT param EMPTY>
+<!ATTLIST param
+  name  CDATA #REQUIRED
+  value CDATA #REQUIRED
+>
+
+<!-- Levels are identified by name. -->
+
+<!ELEMENT level EMPTY>
+<!ATTLIST level
+  name CDATA #REQUIRED
+>
+
+<!-- If no level element is specified, then the configurator
+     MUST not touch the level of the named logger. -->
+
+<!ELEMENT logger (param*, level?, appender-ref*)>
+<!ATTLIST logger
+  class    CDATA #IMPLIED
+  name     CDATA #REQUIRED
+  additive (true | false) "true"
+>
+
+<!-- If no level element is specified, then the configurator
+     MUST not touch the level of root.
+     The root logger always exists and cannot be subclassed. -->
+
+<!ELEMENT root (param*, level?, appender-ref*)>
+
+<!-- Refer back to the appender defined earlier. -->
+
+<!ELEMENT appender-ref EMPTY>
+<!ATTLIST appender-ref
+  ref IDREF #REQUIRED
+>
+
+<!-- ==================================================================== -->
+<!-- The following definitions are for use
+     in formatting logging events as XML. -->
+
+<!ELEMENT log4d:eventSet (log4d:event*)>
+<!ATTLIST log4d:eventSet
+  version CDATA #FIXED "1.2"
+>
+
+<!ELEMENT log4d:event (log4d:message, log4d:NDC?, log4d:exception?) >
+
+<!-- The name of the logger.
+     The name and numeric value of the level.
+     The id of the running thread.
+     The timestamp of the event (format is application dependent).
+     The time elapsed since the start of the application (millisecs). -->
+
+<!ATTLIST log4d:event
+  logger     CDATA #REQUIRED
+  levelName  CDATA #REQUIRED
+  levelValue CDATA #REQUIRED
+  thread     CDATA #REQUIRED
+  timestamp  CDATA #REQUIRED
+  elapsed    CDATA #REQUIRED
+>
+
+<!ELEMENT log4d:message (#PCDATA)>
+
+<!ELEMENT log4d:NDC (#PCDATA)>
+
+<!ELEMENT log4d:exception (#PCDATA)>
+<!ATTLIST log4d:exception
+  class CDATA #REQUIRED
+>
+
