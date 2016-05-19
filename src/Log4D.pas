@@ -59,7 +59,7 @@ unit Log4D;
 
 interface
 
-{$I Defines.inc}
+{$DEFINE HAS_UNIT_CONTNRS}
 
 uses
   Classes,
@@ -148,7 +148,7 @@ const
   DEFAULT_MAX_BACKUP_INDEX = 1;
 
 type
-{$IFDEF DELPHI4}
+{$IFDEF VER120}
   TClassList  = TList;
   TObjectList = TList;
 {$ENDIF}
@@ -1182,7 +1182,7 @@ begin
     end
     else if TLogLevel(Levels[Index]).Level = Level.Level then
     begin
-{$IFDEF DELPHI4}
+{$IFDEF VER120}
       TObject(Levels[Index]).Free;
 {$ELSE}
       Levels[Index].Free;
@@ -2216,7 +2216,7 @@ procedure TLogCustomLayout.Init;
 begin
   inherited Init;
   SetOption(DateFormatOpt,
-    {$IFDEF DELPHIXE_UP}FormatSettings.{$ENDIF}
+    {$IF CompilerVersion >= 22}FormatSettings.{$ENDIF}
     {$IFDEF FPC}FormatSettings.{$ENDIF}
     ShortDateFormat);
 end;
@@ -2504,7 +2504,10 @@ constructor TLogFallbackErrorHandler.Create;
 begin
   inherited Create;
   FLoggers             := TObjectList.Create;
-{$IFDEF DELPHI5_UP}
+{$IFDEF VER130}
+  FLoggers.OwnsObjects := False;
+{$ENDIF}
+{$IF CompilerVersion >= 14}
   FLoggers.OwnsObjects := False;
 {$ENDIF}
 end;
@@ -3788,7 +3791,7 @@ begin
   end
   else
   begin
-{$IFDEF DELPHI4}
+{$IFDEF VER120}
     TClass(Classes[Index]).Create.GetInterface(InterfaceType, Result);
 {$ELSE}
     Classes[Index].Create.GetInterface(InterfaceType, Result);
@@ -3908,7 +3911,7 @@ begin
     Result := nil;
   end
   else
-{$IFDEF DELPHI4}
+{$IFDEF VER120}
     Result := TClass(RenderedClasses[Index]);
 {$ELSE}
     Result := RenderedClasses[Index];
@@ -3986,7 +3989,10 @@ initialization
   InitializeCriticalSection(CriticalNDC);
   { Standard levels. }
   Levels             := TObjectList.Create;
-{$IFDEF DELPHI5_UP}
+{$IFDEF VER130}
+  Levels.OwnsObjects := True;
+{$ENDIF}
+{$IF CompilerVersion >= 14}
   Levels.OwnsObjects := True;
 {$ENDIF}
   All   := TLogLevel.Create('all',   AllValue);
@@ -4040,7 +4046,7 @@ initialization
   LogLog.Hierarchy := DefaultHierarchy;
 finalization
 
-{$IFDEF DELPHI4}
+{$IFDEF VER120}
   LevelFree;
 {$ENDIF}
   Levels.Free;
