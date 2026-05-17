@@ -59,6 +59,7 @@ unit Log4D;
   - removed jedi.inc and add IF / IFEND blocks
   - add methods with signature (const Fmt: string; const Args: array of const; const Err: Exception = nil);
   - use const on string arguments
+  - add resource protection (try .. finally) in TLogFileAppender.SetLogFile
 
 }
 
@@ -3058,8 +3059,11 @@ begin
     //  SysUtils.FileCreate() ignores any sharing option (like our fmShareDenyWrite),
     // Creating new file
     AssignFile(f, FFileName);
-    ReWrite(f);
-    CloseFile(f);
+    try
+      ReWrite(f);
+    finally
+      CloseFile(f);
+    end;
     // now use this file
     FStream := TFileStream.Create(FFileName, fmOpenReadWrite or fmShareDenyWrite);
 
