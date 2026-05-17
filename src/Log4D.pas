@@ -19,7 +19,7 @@ unit Log4D;
   Contributor(s): adasen, mhoenemann, aweber, ahesse, michaelJustin, svenHarazim.
 }
 
-{  
+{
   Logging for Delphi.
   Based on log4j Java package from Apache
   (http://jakarta.apache.org/log4j/docs/index.html).
@@ -58,6 +58,7 @@ unit Log4D;
   changes by svenHarazim and michaelJustin
   - removed jedi.inc and add IF / IFEND blocks
   - add methods with signature (const Fmt: string; const Args: array of const; const Err: Exception = nil);
+  - use const on string arguments
 
 }
 
@@ -202,7 +203,7 @@ type
     FLevel: Integer;
     FName: string;
   public
-    constructor Create(Name: string; Level: Integer);
+    constructor Create(const Name: string; Level: Integer);
     property Level: Integer read FLevel;
     property Name: string read FName;
     function IsGreaterOrEqual(LogLevel: TLogLevel): Boolean;
@@ -212,9 +213,9 @@ type
     class function GetLevel(LogLevel: Integer; DefaultLevel: TLogLevel): TLogLevel;
       overload;
     { Retrieve a level object given its name. }
-    class function GetLevel(Name: string): TLogLevel; overload;
+    class function GetLevel(const Name: string): TLogLevel; overload;
     { Retrieve a level object given its name, or default if not valid. }
-    class function GetLevel(Name: string; DefaultLevel: TLogLevel): TLogLevel;
+    class function GetLevel(const Name: string; DefaultLevel: TLogLevel): TLogLevel;
       overload;
   end;
 
@@ -1211,7 +1212,7 @@ begin
   Levels.Add(Level);
 end;
 
-constructor TLogLevel.Create(Name: string; Level: Integer);
+constructor TLogLevel.Create(const Name: string; Level: Integer);
 begin
   inherited Create;
   FName  := Name;
@@ -1243,13 +1244,13 @@ begin
 end;
 
 { Retrieve a level object given its name. }
-class function TLogLevel.GetLevel(Name: string): TLogLevel;
+class function TLogLevel.GetLevel(const Name: string): TLogLevel;
 begin
   Result := GetLevel(Name, Debug);
 end;
 
 { Retrieve a level object given its name, or default if not valid. }
-class function TLogLevel.GetLevel(Name: string; DefaultLevel: TLogLevel):
+class function TLogLevel.GetLevel(const Name: string; DefaultLevel: TLogLevel):
   TLogLevel;
 var
   Index: Integer;
@@ -3810,7 +3811,7 @@ end;
 
 { Register a class as an implementor of a particular interface. }
 procedure RegisterClass(ClassType: TClass; InterfaceType: TGUID;
-  InterfaceName: string; Names: TStringList; Classes: TClassList);
+  const InterfaceName: string; Names: TStringList; Classes: TClassList);
 var
   Index: Integer;
 begin
@@ -3829,7 +3830,7 @@ begin
 end;
 
 { Create a new instance of a class implementing a particular interface. }
-function FindClass(ClassName: string; InterfaceType: TGUID;
+function FindClass(const ClassName: string; InterfaceType: TGUID;
   Names: TStringList; Classes: TClassList): IUnknown;
 var
   Index: Integer;
@@ -4099,6 +4100,7 @@ initialization
   { Internal logging }
   LogLog           := TLogLog.Create;
   LogLog.Hierarchy := DefaultHierarchy;
+
 finalization
 
 {$IFDEF VER120}
