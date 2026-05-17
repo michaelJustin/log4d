@@ -4,6 +4,7 @@
 [![Delphi](https://img.shields.io/badge/Delphi-2009+-blue.svg)]()
 [![Lazarus](https://img.shields.io/badge/Lazarus-2.0+-blue.svg)]()
 ![GitHub Release](https://img.shields.io/github/v/release/michaelJustin/log4d)
+![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/michaelJustin/log4d)
 
 # log4d
 
