@@ -7,4 +7,4 @@ Log4D is a port of the well known log4j logging framework. You can find the orig
 You can find this project at https://github.com/michaelJustin/log4d
 
 See also: https://blog.habarisoft.com/2012/09/delphi-and-free-pascal-logging-with-the-log4d-open-source-library/
-Log4D help files are available online at http://cc.embarcadero.com/item/16446.
+
