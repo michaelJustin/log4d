@@ -2,9 +2,8 @@
 [![Stars](https://img.shields.io/github/stars/michaelJustin/log4d.svg)](https://github.com/michaelJustin/log4d/stargazers)
 [![Last Commit](https://img.shields.io/github/last-commit/michaelJustin/log4d.svg)](https://github.com/michaelJustin/log4d/commits)
 [![Delphi](https://img.shields.io/badge/Delphi-2009+-blue.svg)]()
-[![Lazarus](https://img.shields.io/badge/Lazarus-2.0+-blue.svg)]()
 ![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/michaelJustin/log4d)
-![GitHub Release](https://img.shields.io/github/v/release/michaelJustin/log4d)
+
 
 # log4d
 
