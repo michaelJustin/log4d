@@ -60,6 +60,7 @@ unit Log4D;
   - add methods with signature (const Fmt: string; const Args: array of const; const Err: Exception = nil);
   - use const on string arguments
   - add resource protection (try .. finally) in TLogFileAppender.SetLogFile
+  - replace fmShareDenyWrite with fmShareDenyNone for concurrent logging
 
 }
 
@@ -3044,8 +3045,8 @@ begin
   if FAppend and FileExists(FFileName) then
   begin
     // append to existing file
-
-    FStream := TFileStream.Create(FFileName, fmOpenReadWrite or fmShareDenyWrite);
+    // note that we replace fmShareDenyWrite with fmShareDenyNone for concurrent logging possibility
+    FStream := TFileStream.Create(FFileName, fmOpenReadWrite or fmShareDenyNone);
     FStream.Seek(0, soFromEnd);
   end
   else
@@ -3065,8 +3066,7 @@ begin
       CloseFile(f);
     end;
     // now use this file
-    FStream := TFileStream.Create(FFileName, fmOpenReadWrite or fmShareDenyWrite);
-
+    FStream := TFileStream.Create(FFileName, fmOpenReadWrite or fmShareDenyNone);
   end;
   WriteHeader;
 end;
