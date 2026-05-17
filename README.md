@@ -1,3 +1,9 @@
+[![Pascal](https://img.shields.io/badge/language-Object%20Pascal-blue.svg)]()
+[![Stars](https://img.shields.io/github/stars/michaelJustin/log4d.svg)](https://github.com/michaelJustin/log4d/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/michaelJustin/log4d.svg)](https://github.com/michaelJustin/log4d/commits)
+[![Delphi](https://img.shields.io/badge/Delphi-2009+-blue.svg)]()
+[![Lazarus](https://img.shields.io/badge/Lazarus-2.0+-blue.svg)]()
+
 # log4d
 
 This project contains files from the Log4D project with fixes to support newer Delphi versions and Free Pascal.
