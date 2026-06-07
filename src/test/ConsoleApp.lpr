@@ -1,6 +1,6 @@
 program ConsoleApp;
 
-{$mode objfpc}{$H+}
+{$mode Delphi}{$H+}
 
 uses
   Log4D;
