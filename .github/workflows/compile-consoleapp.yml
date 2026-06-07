@@ -19,7 +19,7 @@ jobs:
 
     - name: Install Free Pascal Compiler
       run: |
-        choco install lazarus -y
+        choco install lazarus --version=2.2.2 -y
 
     - name: Verify FPC installation
       run: fpc -iV
