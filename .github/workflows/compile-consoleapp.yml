@@ -22,7 +22,9 @@ jobs:
         choco install lazarus --version=4.0.0 -y
 
     - name: Verify FPC installation
-      run: fpc -iV
+      run: |
+        $env:PATH = "C:\lazarus\fpc\3.2.2\bin\x86_64-win64;$env:PATH"
+        fpc -iV
 
     - name: Compile ConsoleApp
       run: |
