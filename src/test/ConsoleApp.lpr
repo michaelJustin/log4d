@@ -3,7 +3,7 @@ program ConsoleApp;
 {$mode Delphi}{$H+}
 
 uses
-  Log4D;
+  Log4D in '..\main\Log4D.pas';
 
 begin
   WriteLn('Free Pascal Console Application using Log4D');
