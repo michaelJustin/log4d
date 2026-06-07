@@ -30,11 +30,7 @@ jobs:
         cd src/test
         fpc -Fu../,../ ConsoleApp.lpr -o ConsoleApp
 
-    - name: Upload compiled artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: ConsoleApp-executable
-        path: src/test/ConsoleApp
+
 
 
 
