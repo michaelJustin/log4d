@@ -12,15 +12,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v6.0.3
 
     - name: Install Free Pascal Compiler
       run: |
-        sudo apt-get update
-        sudo apt-get install -y fp-compiler
+        choco install fpc -y
 
     - name: Verify FPC installation
       run: fpc -iV
