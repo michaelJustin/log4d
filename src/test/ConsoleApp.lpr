@@ -1,7 +1,5 @@
 program ConsoleApp;
 
-{$mode Delphi}{$H+}
-
 uses
   Log4D in '..\main\Log4D.pas';
 
