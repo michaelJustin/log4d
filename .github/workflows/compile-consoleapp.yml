@@ -30,7 +30,7 @@ jobs:
       run: |
         $env:PATH = "C:\lazarus\fpc\3.2.2\bin\x86_64-win64;$env:PATH"
         cd src/test
-        fpc -Fu../main ConsoleApp.lpr
+        fpc -Fu../main -Mdelphi ConsoleApp.lpr
 
 
 
