@@ -28,7 +28,7 @@ jobs:
     - name: Compile ConsoleApp
       run: |
         cd src/test
-        fpc -Fu../main,../main ConsoleApp.lpr
+        fpc -Fu../main ConsoleApp.lpr
 
 
 
