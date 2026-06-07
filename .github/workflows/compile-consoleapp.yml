@@ -19,14 +19,14 @@ jobs:
 
     - name: Install Free Pascal Compiler
       run: |
-        choco install lazarus --version=2.2.2 -y
+        choco install lazarus --version=4.0.0 -y
 
     - name: Verify FPC installation
       run: fpc -iV
 
     - name: Compile ConsoleApp
       run: |
-        $env:PATH = "C:\lazarus\fpc\2.2.2\bin\x86_64-win64;$env:PATH"
+        $env:PATH = "C:\lazarus\fpc\3.2.2\bin\x86_64-win64;$env:PATH"
         cd src/test
         fpc -Fu../main ConsoleApp.lpr
 
