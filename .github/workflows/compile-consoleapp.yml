@@ -1,0 +1,47 @@
+name: Compile ConsoleApp
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'src/test/ConsoleApp.lpr'
+      - 'src/**'
+      - '.github/workflows/compile-consoleapp.yml'
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Free Pascal Compiler
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y fp-compiler
+
+    - name: Verify FPC installation
+      run: fpc -v
+
+    - name: Compile ConsoleApp
+      run: |
+        cd src/test
+        fpc -Fu../,../ ConsoleApp.lpr -o ConsoleApp
+
+    - name: Upload compiled artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ConsoleApp-executable
+        path: src/test/ConsoleApp
+
+
+
+
+
+
+
+
+
+        
