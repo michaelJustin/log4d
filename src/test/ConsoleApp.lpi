@@ -8,7 +8,6 @@
         <MainUnitHasCreateFormStatements Value="False"/>
         <MainUnitHasTitleStatement Value="False"/>
         <MainUnitHasScaledStatement Value="False"/>
-        <UseDefaultCompilerOptions Value="True"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <Title Value="ConsoleApp"/>
@@ -37,6 +36,10 @@
     <Units>
       <Unit>
         <Filename Value="ConsoleApp.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\main\Log4D.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
