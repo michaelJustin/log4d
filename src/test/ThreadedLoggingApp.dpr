@@ -100,10 +100,8 @@ begin
     Thread2.Start;
 
     { Wait for threads to complete }
-    while (Thread1 <> nil) or (Thread2 <> nil) do
-    begin
-      Sleep(100);
-    end;
+    Thread1.WaitFor;
+    Thread2.WaitFor;
 
     { Log from main thread }
     RootLogger.Info('Application finished');
