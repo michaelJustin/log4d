@@ -30,7 +30,7 @@ begin
   inherited Create(True);
   FThreadName := AThreadName;
   FIterations := AIterations;
-  FreeOnTerminate := True;
+  FreeOnTerminate := False;
 end;
 
 procedure TLoggingThread.Execute;
@@ -102,6 +102,10 @@ begin
     { Wait for threads to complete }
     Thread1.WaitFor;
     Thread2.WaitFor;
+
+    { Free the thread objects }
+    Thread1.Free;
+    Thread2.Free;
 
     { Log from main thread }
     RootLogger.Info('Application finished');
