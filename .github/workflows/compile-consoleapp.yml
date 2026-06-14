@@ -5,7 +5,7 @@ on:
     branches: [ master, main ]
     paths:
       - 'src/test/ConsoleApp.lpr'
-      - 'src/**'
+      - 'src/main/Log4D.pas'
       - '.github/workflows/compile-consoleapp.yml'
   pull_request:
     branches: [ master, main ]
