@@ -3068,7 +3068,6 @@ begin
   WriteHeader;
 end;
 
-
 { close file stream }
 procedure TLogFileAppender.CloseLogFile;
 begin
