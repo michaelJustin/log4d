@@ -18,7 +18,7 @@ jobs:
 
     - name: Install Free Pascal Compiler
       run: |
-        sudo apt-get install -y fp-compiler
+        sudo apt-get install -y fp-compiler-3.2.2
 
     - name: Verify FPC installation
       run: |
