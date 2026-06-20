@@ -23,13 +23,11 @@ jobs:
     - name: Verify FPC installation
       run: |
         fpc -iV
-        find / -iname "syncobjs.ppu" 2>/dev/null
-        find / -iname "SyncObjs.ppu" 2>/dev/null
 
     - name: Compile ConsoleApp
       run: |
         cd src/test
-        fpc -Fu../main -Mdelphi ConsoleApp.lpr
+        fpc -Fu../main -Fu/usr/lib/fpc/3.2.2/units/x86_64-linux/rtl -Mdelphi ConsoleApp.lpr
 
 
 
