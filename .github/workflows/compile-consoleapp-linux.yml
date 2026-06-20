@@ -1,4 +1,4 @@
-name: Compile ConsoleApp (Linux)
+name: Compile and run ConsoleApp (Linux)
 
 on:
   push:
@@ -28,6 +28,10 @@ jobs:
       run: |
         cd src/test
         fpc -Fu../main -Mdelphi ConsoleApp.lpr
+
+    - name: Run ConsoleApp
+      run: |
+        ./ConsoleApp
 
 
 
