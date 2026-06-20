@@ -66,8 +66,6 @@ unit Log4D;
 
 interface
 
-{$DEFINE HAS_UNIT_CONTNRS}
-
 uses
   Classes,
 {$IFDEF LINUX}
@@ -75,9 +73,7 @@ uses
 {$ELSE}
   Windows,
 {$ENDIF}
-{$IFDEF HAS_UNIT_CONTNRS}
   Contnrs,
-{$ENDIF}
   SysUtils;
 
 const
