@@ -31,14 +31,6 @@ jobs:
 
     - name: Run ConsoleApp
       run: |
+        dir
         ./ConsoleApp
-
-
-
-
-
-
-
-
-
         
