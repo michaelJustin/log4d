@@ -69,7 +69,7 @@ interface
 uses
   Classes,
 {$IFDEF LINUX}
-  syncobjs,
+  SyncObjs,
 {$ELSE}
   Windows,
 {$ENDIF}
