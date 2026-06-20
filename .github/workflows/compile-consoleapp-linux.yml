@@ -31,6 +31,7 @@ jobs:
 
     - name: Run ConsoleApp
       run: |
+        cd src/test
         dir
         ./ConsoleApp
         
