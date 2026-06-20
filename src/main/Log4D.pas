@@ -3042,7 +3042,6 @@ end;
 procedure TLogFileAppender.SetLogFile(const Name: string);
 var
   strPath: string;
-  f : TextFile;
 begin
   CloseLogFile;
   FFileName := Name;
@@ -3057,23 +3056,18 @@ begin
   begin
     // Check if directory exists
     strPath := ExtractFileDir(FFileName);
-    if (strPath <> '') and  not DirectoryExists(strPath) then
+    if (strPath <> '') and not DirectoryExists(strPath) then
       ForceDirectories(strPath);
 
     //FIX 04.10.2006 MHoenemann:
     //  SysUtils.FileCreate() ignores any sharing option (like our fmShareDenyWrite),
-    // Creating new file
-    AssignFile(f, FFileName);
-    try
-      ReWrite(f);
-    finally
-      CloseFile(f);
-    end;
-    // now use this file
-    FStream := TFileStream.Create(FFileName, fmOpenReadWrite or fmShareDenyNone);
+    // Creating new file directly via TFileStream with fmCreate, which truncates/creates
+    // the file and gives us the stream with the desired share mode in one step.
+    FStream := TFileStream.Create(FFileName, fmCreate or fmShareDenyNone);
   end;
   WriteHeader;
 end;
+
 
 { close file stream }
 procedure TLogFileAppender.CloseLogFile;
