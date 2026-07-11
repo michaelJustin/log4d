@@ -2,7 +2,7 @@
 [![Delphi](https://img.shields.io/badge/Delphi-2009+-blue.svg)]()
 [![Lazarus](https://img.shields.io/badge/Lazarus-4.0+-blue.svg)]()
 [![Last Commit](https://img.shields.io/github/last-commit/michaelJustin/log4d.svg)](https://github.com/michaelJustin/log4d/commits)
-[![Compile ConsoleApp](https://github.com/michaelJustin/log4d/actions/workflows/compile-consoleapp.yml/badge.svg)](https://github.com/michaelJustin/log4d/actions/workflows/compile-consoleapp.yml)
+[![Compile ConsoleApp](https://github.com/michaelJustin/log4d/actions/workflows/compile-consoleapp-linux.yml/badge.svg)](https://github.com/michaelJustin/log4d/actions/workflows/compile-consoleapp-linux.yml)
 
 
 # log4d
