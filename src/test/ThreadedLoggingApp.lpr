@@ -64,7 +64,7 @@ begin
 
     { Create and configure the pattern layout }
     { Pattern shows: timestamp [thread] level logger - message }
-    Layout := TLogPatternLayout.Create('[%d{yyyy-mm-dd hh:nn:ss.zzz}] [%t] %p %c - %m%n');
+    Layout := TLogPatternLayout.Create('[%d] [%t] %p %c - %m%n');
 
     { Create file appender with the pattern layout }
     Appender := TLogFileAppender.Create(
