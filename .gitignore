@@ -68,6 +68,10 @@ __history/
 dunit.ini
 Unittests.dproj
 
+# FPCUnit local run configuration
+testdefaults.ini
+src/test/Unittests.fpcunit.ini
+
 # Free Pascal compiler-generated binaries (safe to delete)
 *.ppu
 *.compiled
