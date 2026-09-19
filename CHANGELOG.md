@@ -17,6 +17,9 @@ trunk, so releases are tagged and dated instead of version-bumped.
   `UNIT-TESTS.md` describing how to build and run it
   ([#27](https://github.com/michaelJustin/log4d/pull/27), closes
   [#26](https://github.com/michaelJustin/log4d/issues/26))
+- `.github/workflows/tests.yml`: builds and runs the fpcunit suite headless
+  on `windows-latest` and `ubuntu-latest`, modeled on slf4p's `tests.yml`
+  (closes [#25](https://github.com/michaelJustin/log4d/issues/25))
 
 ### Fixed
 - Corrected casing of the `SyncObjs`/`syncobjs` unit reference for
