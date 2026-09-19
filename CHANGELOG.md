@@ -11,6 +11,12 @@ trunk, so releases are tagged and dated instead of version-bumped.
 
 ### Added
 - `%r` pattern support for logging elapsed time (a97f04c)
+- An fpcunit test suite under `src/test` (50 tests covering `TLogLevel`,
+  `TLogEvent`, `TLogLogger`/`TLogHierarchy`, `TLogPatternLayout`, the
+  filter classes, `TLogFileAppender`, and both configurators), plus
+  `UNIT-TESTS.md` describing how to build and run it
+  ([#27](https://github.com/michaelJustin/log4d/pull/27), closes
+  [#26](https://github.com/michaelJustin/log4d/issues/26))
 
 ### Fixed
 - Corrected casing of the `SyncObjs`/`syncobjs` unit reference for
